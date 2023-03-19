@@ -45,22 +45,33 @@ async function getWeather(city){
 
         console.log(weatherData)
         // saveCity(city);
-        // displayWeather(weatherData, city);
+         displayWeather(weatherData, city);
         // getForecast(coords); 
     } catch (error) {
         alert("Could not load city./n Try Another City")
     }
 }
 
-//function getCurrendate
-
+//function getCurrendate 
 function getCurrentDate(){
-
+    const currentDate = new Date();
+    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+    return currentDate.toLocaleDateString("en-US", options);
 }
 
 // Displays the current weather data for a city 
 function displayWeather(data) {
-
+    // Update the HTML elements with the weather data
+    const cityNameEl = document.getElementById("city-name");
+    const currentIconEl = document.getElementById("weather-icon");
+    const currentTempEl = document.getElementById("temperature");
+    const currentHumidityEl = document.getElementById("humidity");
+    const currentWindEl = document.getElementById("wind-speed");
+    cityNameEl.textContent = `${data.name} (${getCurrentDate()})`;
+    currentIconEl.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
+    currentTempEl.textContent = `Temperature: ${data.main.temp} °F`;
+    currentHumidityEl.textContent = `Humidity: ${data.main.humidity}%`;
+    currentWindEl.textContent = `Wind Speed: ${data.wind.speed} MPH`;
 }
 
 //Retrieves the 5-day forecast data for a city
