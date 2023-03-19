@@ -29,7 +29,27 @@ searchBtnEl.addEventListener('click',searchHandler)
 //function getWeather
 
 async function getWeather(city){
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
 
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error("City not found");
+        }
+
+        const weatherData = await response.json();
+        const coords = {
+            lat: weatherData.coord.lat,
+            lon: weatherData.coord.lon,
+        };
+
+        console.log(weatherData)
+        // saveCity(city);
+        // displayWeather(weatherData, city);
+        // getForecast(coords); 
+    } catch (error) {
+        alert("Could not load city./n Try Another City")
+    }
 }
 
 //function getCurrendate
@@ -51,12 +71,7 @@ function getForecast(coords){
 // Saves a city to local storage
 function saveCity(city){
 
-}
-
-//load saved cities
-function loadCities() {
-
-}
+} 
 
 //display   search  history
 function displaySearchHistory() {
@@ -71,3 +86,5 @@ function displayForecast(data){
 
 function historyHandler(event) {
 }
+
+displaySearchHistory()
