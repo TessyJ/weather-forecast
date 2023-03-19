@@ -46,7 +46,12 @@ button[type="submit"] {
     border: none;
     cursor: pointer;
 }
-
+main{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+    justify-content: space-between;
+}
 #weather-display {
     flex-basis: 70%; 
   }
@@ -126,4 +131,58 @@ button[type="submit"] {
     flex-basis: calc(100% / 5 - 1rem);
     margin-right: 1rem;
     margin-bottom: 1rem;
+  }
+  #search-history {
+    flex-basis: 25%;
+  }
+
+  #history-list {
+    list-style: none;
+    text-transform: capitalize;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .history-item {
+    background-color: #5977a9;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    flex-basis: calc(33.33% - 20px);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .history-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .history-item h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  .history-item p {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    #history-list {
+      justify-content: center;
+    }
+
+    .history-item {
+      flex-basis: calc(50% - 20px);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .history-item {
+      flex-basis: 100%;
+    }
   }
