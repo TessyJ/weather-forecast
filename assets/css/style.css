@@ -46,3 +46,84 @@ button[type="submit"] {
     border: none;
     cursor: pointer;
 }
+
+#weather-display {
+    flex-basis: 70%; 
+  }
+
+  #city-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  #weather-info {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    margin: 1rem;
+    border: 1px solid black;
+    padding: 12px;
+  }
+
+  #weather-icon {
+    width: 80px;
+    height: 80px;
+    margin-right: 1rem;
+  }
+
+  #temperature,
+  #humidity,
+  #wind-speed {
+    margin: 1rem;
+    
+  }
+
+  #forecast {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  #forecast .day {
+    width: 20%;
+    background-color: #f0c040;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  #forecast .day:last-child {
+    margin-right: 0;
+  }
+
+  #forecast .temp {
+    font-size: 16px;
+    margin: 5px 0 0;
+  }
+  
+  .forecast-single{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #5977a9;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    flex-basis: calc(33.33% - 20px);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  #forecast > div {
+    flex-basis: calc(100% / 5 - 1rem);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+  }
