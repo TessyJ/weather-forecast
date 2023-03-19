@@ -8,12 +8,10 @@ https://tessyj.github.io/weather-forecast/
 https://github.com/TessyJ/weather-forecast
 
 # Project Description
-This Webpage is a simple calendar application that allows users to save events for each hour of the day by modifying the starter code.
+This Webpage is a simple weather forecase application. It provides a city weather forecast and also provides a 5 day weather forecast
 <br>
-This calendar helps to manage time effectively by adding important events to the daily planner.
-<br>
-It provides a unique feature that lets the user know the task for the day has been executed, is presently running and also yet to complete by displaying different colours.
-
+It also saves our search to history so as to get last item searched.
+ 
 # Screen Shot
 <img width="1709" alt="Screenshot1" src="https://tessyj.github.io/weather-forecast/assets/images/shot1.png"> <br> <br>
 
