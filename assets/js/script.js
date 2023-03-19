@@ -46,7 +46,7 @@ async function getWeather(city){
         console.log(weatherData)
         // saveCity(city);
          displayWeather(weatherData, city);
-        // getForecast(coords); 
+         getForecast(coords); 
     } catch (error) {
         alert("Could not load city./n Try Another City")
     }
@@ -72,11 +72,59 @@ function displayWeather(data) {
     currentTempEl.textContent = `Temperature: ${data.main.temp} °F`;
     currentHumidityEl.textContent = `Humidity: ${data.main.humidity}%`;
     currentWindEl.textContent = `Wind Speed: ${data.wind.speed} MPH`;
+
+    // Get the 5-day forecast for the city
+    getForecast({ lat: data.coord.lat, lon: data.coord.lon });
 }
 
 //Retrieves the 5-day forecast data for a city
 function getForecast(coords){
-
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${API_KEY}`;
+  
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        // Select the forecast element and clear its contents
+        const forecastEl = document.querySelector('#forecast');
+        forecastEl.innerHTML = '';
+  
+        // Get the date for today and the next four days
+        const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        const today = new Date();
+        let currentDay = today.getDay();
+  
+        // Loop through the forecast data for the next 5 days and create an element for each day
+        for (let i = 0; i < 5; i++) {
+          const forecastData = data.list[i * 8]; // Data for each day is every 8th item in the list
+          const forecastDay = daysOfWeek[currentDay];
+          const forecastIcon = forecastData.weather[0].icon;
+          const forecastTemp = Math.round(forecastData.main.temp);
+          const forecastWind = Math.round(forecastData.wind.speed);
+          const forecastHumidity = Math.round(forecastData.main.humidity);
+  
+          // Create the HTML for the forecast element
+          const forecastElement = `
+            <div class="forecast-single">
+                  <h5 class="day">${forecastDay}</h5>
+                  <p class="temp">
+                    <img src="http://openweathermap.org/img/wn/${forecastIcon}.png" alt="${forecastData.weather[0].description}" />
+                  </p>
+                  <p class="temp">Temp: ${forecastTemp}&deg;C</p>
+                  <p class="temp">Wind: ${forecastWind} km/h</p>
+                  <p class="temp">Humidity: ${forecastHumidity}%</p>
+            </div>
+          `;
+  
+          // Add the forecast element to the forecast element container
+          forecastEl.insertAdjacentHTML('beforeend', forecastElement);
+  
+          // Increment the day counter
+          currentDay = (currentDay + 1) % 7;
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching forecast data:', error);
+      });
 }
 
 // Saves a city to local storage
