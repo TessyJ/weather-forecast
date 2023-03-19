@@ -137,7 +137,24 @@ function saveCity(city){
 
 //display   search  history
 function displaySearchHistory() {
+    var history = document.querySelector("#history-list");
+    history.innerHTML = "";
 
+    var cities = JSON.parse(localStorage.getItem("cities")) || [];
+
+    for (var i = 0; i < cities.length; i++) {
+        var city = cities[i];
+
+        var liEl = document.createElement("li");
+        liEl.classList.add("list-group-item", "history-item");
+        liEl.textContent = city;
+        liEl.setAttribute("data-city", city);
+        liEl.addEventListener("click", function () {
+            getWeather(this.getAttribute("data-city"));
+        });
+
+        history.appendChild(liEl);
+    }
 }
  
 
