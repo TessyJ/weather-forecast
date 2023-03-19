@@ -42,11 +42,9 @@ async function getWeather(city){
             lat: weatherData.coord.lat,
             lon: weatherData.coord.lon,
         };
-
-        console.log(weatherData)
-        // saveCity(city);
-         displayWeather(weatherData, city);
-         getForecast(coords); 
+        saveCity(city);
+        displayWeather(weatherData, city);
+        getForecast(coords); 
     } catch (error) {
         alert("Could not load city./n Try Another City")
     }
@@ -129,19 +127,19 @@ function getForecast(coords){
 
 // Saves a city to local storage
 function saveCity(city){
-
+    let cities = JSON.parse(localStorage.getItem("cities")) || [];
+    if (!cities.includes(city.toLowerCase())) {
+        cities.unshift(city.toLowerCase());
+        localStorage.setItem("cities", JSON.stringify(cities));
+        displaySearchHistory();
+    }
 } 
 
 //display   search  history
 function displaySearchHistory() {
 
 }
-
-//Displays the 5-day forecast data for a city
-
-function displayForecast(data){
-
-}
+ 
 
 function historyHandler(event) {
 }
