@@ -157,8 +157,6 @@ function displaySearchHistory() {
     }
 }
  
-
-function historyHandler(event) {
-}
+ 
 
 displaySearchHistory()
