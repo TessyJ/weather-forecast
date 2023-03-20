@@ -8,9 +8,9 @@ https://tessyj.github.io/weather-forecast/
 https://github.com/TessyJ/weather-forecast
 
 # Project Description
-This Webpage is a simple weather forecase application. It provides a city weather forecast and also provides a 5 day weather forecast
+This Webpage is a simple weather forecast application. It provides a city weather forecast and also provides a five-day weather forecast.
 <br>
-It also saves our search to history so as to get last item searched.
+It also saves the search history to get the last item searched.
  
 # Screen Shot
 <img width="1709" alt="Screenshot1" src="https://tessyj.github.io/weather-forecast/assets/images/shot1.png"> <br> <br>
